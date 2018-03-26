@@ -51,9 +51,20 @@ purraka.market = {
 	 * Show what's been received using Hogan.JS.
 	 */
 	show: function (json) {
+
+		// Round numbers
+		for (var c = 0; c < json.length; c++) {
+			json[c]["zscore-currentPrice"] = round(json[c]["zscore-currentPrice"], 2);
+			json[c]["zscore-buyNowPrice"] = round(json[c]["zscore-buyNowPrice"], 2);
+			json[c]["zscore-data-bids"] = round(json[c]["zscore-data-bids"], 2);
+		}
+
+		// Encapsulate for Hogan.JS
 		json = {
 			items: json
 		};
+
+		// Render
 		$("#market-content").html(purraka.market.template.render(json));
 	},
 
@@ -62,3 +73,14 @@ purraka.market = {
 	 */
 	template: new Hogan.Template()
 };
+
+/**
+ * Rounds a number.
+ * @param {Number} number 
+ * @param {Number} precision 
+ * @returns {Number}
+ */
+function round(number, precision) {
+	var factor = Math.pow(10, precision);
+	return Math.round(number * factor) / factor;
+}
