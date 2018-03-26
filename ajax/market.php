@@ -45,7 +45,7 @@ $row = $stmt->fetch();
 
 // Array
 $y = array();
-while ($row = $stmt->fetch()) {
+foreach ($stmt as $row) {
 
 	// Columns
 	$x = array(
