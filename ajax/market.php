@@ -3,14 +3,50 @@
 // Require
 require("../php/pdo.inc.php");
 
+// Order
+// This one has to be hard-coded in PDO.
+$order = "zscore-buyNowPrice";
+if (isset($_GET['orderby'])) {
+	switch ($_GET['orderby']) {
+		case 'now':
+			$order = "zscore-buyNowPrice";
+		break;
+		case 'current':
+			$order = "zscore-currentPrice";
+		break;
+		case 'bids':
+			$order = "zscore-data-bids";
+		break;
+	}
+}
+
+// Rarity
+$rarity = '%';
+if (isset($_GET['rarity'])) {
+	$rarity = "%".$_GET['rarity']."%";
+}
+
+// Category
+$category = '%';
+if (isset($_GET['category'])) {
+	$category = "%".$_GET['category']."%";
+}
+
+// Name
+$name = '%';
+if (isset($_GET['name'])) {
+	$name = "%".$_GET['name']."%";
+}
+
 // Statement
-$stmt = $pdo->query("SELECT * FROM `market-everything` LIMIT 100");
+$stmt = $pdo->prepare("SELECT * FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name ORDER BY `$order` LIMIT 100;");
+$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name]);
 $row = $stmt->fetch();
 
 // Array
 $y = array();
 while ($row = $stmt->fetch()) {
-	
+
 	// Columns
 	$x = array(
 		"data-wearableitemid" => $row["data-wearableitemid"],
