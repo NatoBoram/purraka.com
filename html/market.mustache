@@ -1,0 +1,39 @@
+{{#items}}
+<div class="row market-item">
+	<div class="col-sm-3">
+		<img src="{{abstract-icon}}">
+	</div>
+	<div class="col-sm-3 row">
+		<div class="row-sm-6">
+			<h6>Nom</h6>
+			{{abstract-name}}
+		</div>
+		<div class="row-sm-6">
+			<h6>Catégorie</h6>
+			{{abstract-type}}
+		</div>
+	</div>
+	<div class="col-sm-3 row">
+		<div class="row-sm-4">
+			Mise actuelle : {{currentPrice}}
+		</div>
+		<div class="row-sm-4">
+			Achat immédiat : {{buyNowPrice}}
+		</div>
+		<div class="row-sm-4">
+			Enchères : {{data-bids}}
+		</div>
+	</div>
+	<div class="col-sm-3 row">
+		<div class="row-sm-4">
+			{{zscore-currentPrice}}
+		</div>
+		<div class="row-sm-4">
+			{{zscore-buyNowPrice}}
+		</div>
+		<div class="row-sm-4">
+			{{zscore-data-bids}}
+		</div>
+	</div>
+</div>
+{{/items}}

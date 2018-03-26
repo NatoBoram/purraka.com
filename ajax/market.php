@@ -6,8 +6,8 @@ require("../php/pdo.inc.php");
 // Order
 // This one has to be hard-coded in PDO.
 $order = "zscore-buyNowPrice";
-if (isset($_GET['orderby'])) {
-	switch ($_GET['orderby']) {
+if (isset($_GET['sort'])) {
+	switch ($_GET['sort']) {
 		case 'now':
 			$order = "zscore-buyNowPrice";
 		break;
@@ -69,7 +69,7 @@ while ($row = $stmt->fetch()) {
 }
 
 // Display
-header('Content-Type: application/json');
+header('Content-Type: application/json; charset=utf-8');
 echo json_encode($y);
 
 ?>
