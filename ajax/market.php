@@ -41,12 +41,11 @@ if (isset($_GET['name'])) {
 // Statement
 $stmt = $pdo->prepare("SELECT * FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name ORDER BY `$order` LIMIT 100;");
 $stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name]);
-$row = $stmt->fetch();
 
 // Array
 $y = array();
-foreach ($stmt as $row) {
-
+while ($row = $stmt->fetch()) {
+	
 	// Columns
 	$x = array(
 		"data-wearableitemid" => $row["data-wearableitemid"],
