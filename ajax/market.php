@@ -38,9 +38,16 @@ if (isset($_GET['name'])) {
 	$name = "%".$_GET['name']."%";
 }
 
+// Offset
+$offset = 0;
+$limit = 100;
+if (isset($_GET['offset'])) {
+	$offset = $_GET['offset'] * $limit;
+}
+
 // Statement
-$stmt = $pdo->prepare("SELECT * FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name ORDER BY `$order` LIMIT 100;");
-$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name]);
+$stmt = $pdo->prepare("SELECT * FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name ORDER BY `$order` LIMIT :offset,$limit;");
+$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "offset" => $offset]);
 
 // Array
 $y = array();
