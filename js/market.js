@@ -27,8 +27,7 @@ purraka.market = {
 	 * Parses the form, then sends an AJAX request to get a few items.
 	 */
 	submit: function () {
-		purraka.market.clear();
-
+		
 		// Variables
 		var category = $("#filter-typeOptions").val();
 		var rarity = $("#filter-rarityOptions").val();
@@ -65,14 +64,15 @@ purraka.market = {
 		};
 
 		// Render
+		purraka.market.clear();
 		$("#market-content").html(purraka.market.template.render(json));
 
 		// Hide buy now if there's a bid
 		var items = document.getElementsByClassName("market-item");
 		for (c = 0; c < items.length; c++) {
 			if (items[c].getElementsByClassName("data-bids")[0].textContent != "Enchères : 0") {
-				items[c].getElementsByClassName("buyNowPrice")[0].textContent = "";
-				items[c].getElementsByClassName("zscore-buyNowPrice")[0].textContent = "";
+				items[c].getElementsByClassName("buyNowPrice")[0].classList.add("text-muted");
+				items[c].getElementsByClassName("zscore-buyNowPrice")[0].classList.add("text-muted");
 			}
 		}
 	},
