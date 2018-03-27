@@ -1,3 +1,7 @@
+.market-item, .form-inline select, .form-inline input, .form-inline button {
+	margin: 5px;
+}
+
 .align-middle {
 	position: absolute;
     top: 50%;
