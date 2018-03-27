@@ -71,8 +71,8 @@ purraka.market = {
 		var items = document.getElementsByClassName("market-item");
 		for (c = 0; c < items.length; c++) {
 			if (items[c].getElementsByClassName("data-bids")[0].textContent != "Enchères : 0") {
-				items[c].getElementsByClassName("buyNowPrice")[0].html = "";
-				items[c].getElementsByClassName("zscore-buyNowPrice")[0].html = "";
+				items[c].getElementsByClassName("buyNowPrice")[0].textContent = "";
+				items[c].getElementsByClassName("zscore-buyNowPrice")[0].textContent = "";
 			}
 		}
 	},
