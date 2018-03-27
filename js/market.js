@@ -14,6 +14,12 @@ purraka.market = {
 			}
 		});
 		purraka.market.submit();
+		$("select").change(purraka.market.submit);
+		$("input").change(purraka.market.submit);
+		$("form").submit(function (e) {
+			e.preventDefault();
+			purraka.market.submit();
+		});
 	},
 
 	/**
@@ -27,7 +33,7 @@ purraka.market = {
 	 * Parses the form, then sends an AJAX request to get a few items.
 	 */
 	submit: function () {
-		
+
 		// Variables
 		var category = $("#filter-typeOptions").val();
 		var rarity = $("#filter-rarityOptions").val();
@@ -75,6 +81,12 @@ purraka.market = {
 				items[c].getElementsByClassName("zscore-buyNowPrice")[0].classList.add("text-muted");
 			}
 		}
+
+		// OnClick
+		$(".abstract-name").click(function() {
+			$("#filter-itemName").val(this.textContent);
+			purraka.market.submit();
+		});
 	},
 
 	/**
