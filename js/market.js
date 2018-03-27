@@ -78,6 +78,7 @@ purraka.market = {
 		var rarity = $("#filter-rarityOptions").val();
 		var sort = $("#filter-priceOptions").val();
 		var name = $("#filter-itemName").val();
+		var colour = $("#filter-colour").val();
 		purraka.market.offset++;
 
 		// AJAX
@@ -87,7 +88,8 @@ purraka.market = {
 				"rarity": rarity,
 				"sort": sort,
 				"name": name,
-				"offset": purraka.market.offset
+				"offset": purraka.market.offset,
+				"colour": colour
 			},
 			function (json) {
 				purraka.market.show(json);
@@ -124,10 +126,17 @@ purraka.market = {
 			}
 		}
 
-		// OnClick
+		// OnClick Name
 		$(".abstract-name").click(function () {
 			$("#filter-itemName").val(this.textContent);
 			purraka.market.submit();
+		});
+		// OnClick Image
+		$(".market-item img").click(function () {
+			purraka.market.offset = -1;
+			$("#market-content").html("");
+			$("#filter-colour").val($(this).closest(".market-item").attr("colour"));
+			purraka.market.append();
 		});
 	},
 
