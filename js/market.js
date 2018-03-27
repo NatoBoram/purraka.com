@@ -66,6 +66,15 @@ purraka.market = {
 
 		// Render
 		$("#market-content").html(purraka.market.template.render(json));
+
+		// Hide buy now if there's a bid
+		var items = document.getElementsByClassName("market-item");
+		for (c = 0; c < items.length; c++) {
+			if (items[c].getElementsByClassName("data-bids")[0].textContent != "Enchères : 0") {
+				items[c].getElementsByClassName("buyNowPrice")[0].html = "";
+				items[c].getElementsByClassName("zscore-buyNowPrice")[0].html = "";
+			}
+		}
 	},
 
 	/**
