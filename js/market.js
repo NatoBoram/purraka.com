@@ -6,6 +6,8 @@ purraka.market = {
 	 * Fired when the document is loaded.
 	 */
 	init: function () {
+
+		// Prepare the template
 		$.ajax({
 			url: "html/market.mustache",
 			contentType: "text/plain; charset=UTF-8",
@@ -13,12 +15,25 @@ purraka.market = {
 				purraka.market.template = Hogan.compile(data);
 			}
 		});
+
+		// Get the initial data
 		purraka.market.submit();
+
+		// Prepare the form
 		$("select").change(purraka.market.submit);
 		$("input").change(purraka.market.submit);
 		$("form").submit(function (e) {
 			e.preventDefault();
 			purraka.market.submit();
+		});
+
+		// Infinite scrolling
+		$(window).on("scroll", function () {
+			var scrollHeight = $(document).height();
+			var scrollPosition = $(window).height() + $(window).scrollTop();
+			if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+				purraka.market.append();
+			}
 		});
 	},
 
@@ -26,6 +41,7 @@ purraka.market = {
 	 * Clears the market. Useful before adding different items.
 	 */
 	clear: function (params) {
+		purraka.market.offset = 0;
 		$("#market-content").html("");
 	},
 
@@ -46,9 +62,36 @@ purraka.market = {
 				"category": category,
 				"rarity": rarity,
 				"sort": sort,
-				"name": name
+				"name": name,
 			},
-			purraka.market.show
+			function (json) {
+				purraka.market.clear();
+				purraka.market.show(json);
+			}
+		);
+	},
+
+	append: function () {
+
+		// Variables
+		var category = $("#filter-typeOptions").val();
+		var rarity = $("#filter-rarityOptions").val();
+		var sort = $("#filter-priceOptions").val();
+		var name = $("#filter-itemName").val();
+		purraka.market.offset++;
+
+		// AJAX
+		$.getJSON(
+			"ajax/market.php", {
+				"category": category,
+				"rarity": rarity,
+				"sort": sort,
+				"name": name,
+				"offset": purraka.market.offset
+			},
+			function (json) {
+				purraka.market.show(json);
+			}
 		);
 	},
 
@@ -70,8 +113,7 @@ purraka.market = {
 		};
 
 		// Render
-		purraka.market.clear();
-		$("#market-content").html(purraka.market.template.render(json));
+		$("#market-content").append(purraka.market.template.render(json));
 
 		// Hide buy now if there's a bid
 		var items = document.getElementsByClassName("market-item");
@@ -83,7 +125,7 @@ purraka.market = {
 		}
 
 		// OnClick
-		$(".abstract-name").click(function() {
+		$(".abstract-name").click(function () {
 			$("#filter-itemName").val(this.textContent);
 			purraka.market.submit();
 		});
@@ -92,7 +134,12 @@ purraka.market = {
 	/**
 	 * Placeholder for a Hogan template.
 	 */
-	template: new Hogan.Template()
+	template: new Hogan.Template(),
+
+	/**
+	 * Offset, used for infinite scrolling.
+	 */
+	offset: 0
 };
 
 /**
