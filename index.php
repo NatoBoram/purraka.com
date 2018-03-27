@@ -5,6 +5,7 @@
 <head>
 	<?php include("html/head.html"); ?>
 
+	<link rel="stylesheet" type="text/css" href="css/market.css">
 	<script src="js/market.js"></script>
 
 	<link rel="shortcut icon" type="image/png" href="images/Face.png" />
@@ -28,7 +29,7 @@
 			<!-- Category -->
 			<select id="filter-typeOptions" class="form-control">
 				<option value="">Toutes les catégories</option>
-				<option value="PlayerWearableItem">Equipement</option>
+				<option value="PlayerWearableItem">Équipement</option>
 				<option value="Food">Nourriture</option>
 				<option value="Tame">Appât</option>
 				<option value="Utility">Outil</option>
@@ -42,9 +43,9 @@
 				<option value="">Toutes les raretés</option>
 				<option value="common">Commun</option>
 				<option value="rare">Rare</option>
-				<option value="epic">Epique</option>
+				<option value="epic">Épique</option>
 				<option value="legendary">Légendaire</option>
-				<option value="event">Event</option>
+				<option value="event">Évent</option>
 			</select>
 
 			<!-- Sort -->
@@ -55,7 +56,7 @@
 			</select>
 
 			<!-- Name -->
-			<input id="filter-itemName" value="" class="form-control">
+			<input id="filter-itemName" value="" class="form-control" placeholder="Filtrer par nom">
 
 			<!-- Submit -->
 			<button id="filter" class="btn btn-primary" onclick="purraka.market.submit()" type="button">Filtrer</button>
