@@ -58,6 +58,9 @@
 			<!-- Name -->
 			<input id="filter-itemName" value="" class="form-control" placeholder="Filtrer par nom">
 
+			<!-- Colour -->
+			<input type="hidden" id="filter-colour" value="">
+
 			<!-- Submit -->
 			<button id="filter" class="btn btn-primary" onclick="purraka.market.submit()" type="button">Filtrer</button>
 		</form>
