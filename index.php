@@ -59,19 +59,24 @@
 			<!-- Name -->
 			<input id="filter-itemName" value="" class="form-control" placeholder="Filtrer par nom">
 
+			<!-- Offset -->
+			<input type="number" class="form-control" id="filter-offset" placeholder="Page" value="0" min="0" step="1">
+
 			<!-- Colour -->
 			<input type="hidden" id="filter-colour" value="">
 
+			<!-- Type -->
+			<input type="hidden" id="filter-type" value="">
+
 			<!-- Submit -->
-			<button id="filter" class="btn btn-primary" onclick="purraka.market.submit()" type="button">Filtrer</button>
+			<button type="button" class="btn btn-primary" onclick="purraka.market.submit()" id="filter">Filtrer</button>
+
+			<!-- Reset -->
+			<button type="reset" class="btn btn-danger" onclick="purraka.market.reset(); purraka.market.submit();" id="resetform">Reset</button>
 		</form>
 
+		<div class="container" id="market-content"></div>
 
-		<div class="container" id="market-content">
-
-
-
-		</div>
 		<script>
 			purraka.market.init();
 		</script>

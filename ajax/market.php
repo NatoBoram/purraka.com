@@ -51,10 +51,16 @@ if (isset($_GET['colour'])) {
 	$colour = $_GET['colour'] == "" ? "%" : $_GET['colour'];
 }
 
-// Statement
-$stmt = $pdo->prepare("SELECT * FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour ORDER BY `$order` LIMIT :offset,$limit;");
+// Type
+$type = '%';
+if (isset($_GET['type'])) {
+	$type = "%".$_GET['type']."%";
+}
 
-$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "offset" => $offset, "colour" => $colour]);
+// Statement
+$stmt = $pdo->prepare("SELECT * FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour AND `abstract-type` LIKE :type ORDER BY `$order` LIMIT :offset,$limit;");
+
+$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "offset" => $offset, "colour" => $colour, "type" => $type]);
 
 // Array
 $y = array();

@@ -18,22 +18,26 @@ purraka.market = {
 			purraka.market.submit();
 		});
 
-		// Infinite scrolling
-		$(window).on("scroll", function () {
-			var scrollHeight = $(document).height();
-			var scrollPosition = $(window).height() + $(window).scrollTop();
-			if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
-				purraka.market.append();
-			}
-		});
 	},
 
 	/**
 	 * Clears the market. Useful before adding different items.
 	 */
 	clear: function (params) {
-		purraka.market.offset = 0;
 		$("#market-content").html("");
+	},
+
+	/**
+	 * Resets the form.
+	 */
+	reset: function () {
+		$("#filter-typeOptions").val("");
+		$("#filter-rarityOptions").val("");
+		$("#filter-priceOptions").val("now");
+		$("#filter-itemName").val("");
+		$("#filter-colour").val("");
+		$("#filter-type").val("");
+		$("#filter-offset").val("0");
 	},
 
 	/**
@@ -41,28 +45,13 @@ purraka.market = {
 	 */
 	submit: function () {
 
-		// Variables
-		var category = $("#filter-typeOptions").val();
-		var rarity = $("#filter-rarityOptions").val();
-		var sort = $("#filter-priceOptions").val();
-		var name = $("#filter-itemName").val();
-
-		// AJAX
+		// Maximum page
 		$.getJSON(
-			"ajax/market.php", {
-				"category": category,
-				"rarity": rarity,
-				"sort": sort,
-				"name": name,
-			},
+			"ajax/market-count.php", {},
 			function (json) {
-				purraka.market.clear();
-				purraka.market.show(json);
+				$("#filter-offset").attr("max", Math.floor(json.count / 100));
 			}
 		);
-	},
-
-	append: function () {
 
 		// Variables
 		var category = $("#filter-typeOptions").val();
@@ -70,7 +59,8 @@ purraka.market = {
 		var sort = $("#filter-priceOptions").val();
 		var name = $("#filter-itemName").val();
 		var colour = $("#filter-colour").val();
-		purraka.market.offset++;
+		var offset = $("#filter-offset").val();
+		var type = $("#filter-type").val();
 
 		// AJAX
 		$.getJSON(
@@ -79,8 +69,9 @@ purraka.market = {
 				"rarity": rarity,
 				"sort": sort,
 				"name": name,
-				"offset": purraka.market.offset,
-				"colour": colour
+				"offset": offset,
+				"colour": colour,
+				"type" : type
 			},
 			function (json) {
 				purraka.market.show(json);
@@ -106,7 +97,7 @@ purraka.market = {
 		};
 
 		// Render
-		$("#market-content").append(purraka.market.template.render(json));
+		$("#market-content").html(purraka.market.template.render(json));
 
 		// Hide buy now if there's a bid
 		var items = document.getElementsByClassName("market-item");
@@ -119,15 +110,21 @@ purraka.market = {
 
 		// OnClick Name
 		$(".abstract-name").click(function () {
+			purraka.market.reset();
 			$("#filter-itemName").val(this.textContent);
 			purraka.market.submit();
 		});
 		// OnClick Image
 		$(".market-item img").click(function () {
-			purraka.market.offset = -1;
-			$("#market-content").html("");
+			purraka.market.reset();
 			$("#filter-colour").val($(this).closest(".market-item").attr("colour"));
-			purraka.market.append();
+			purraka.market.submit();
+		});
+		// OnClick Type
+		$(".abstract-type").click(function () {
+			purraka.market.reset();
+			$("#filter-type").val(this.textContent);
+			purraka.market.submit();
 		});
 	},
 
@@ -135,11 +132,6 @@ purraka.market = {
 	 * Placeholder for a Hogan template.
 	 */
 	template: templates.market,
-
-	/**
-	 * Offset, used for infinite scrolling.
-	 */
-	offset: 0
 };
 
 /**
