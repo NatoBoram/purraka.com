@@ -6,6 +6,7 @@
 	<?php include("html/head.html"); ?>
 
 	<link rel="stylesheet" type="text/css" href="css/market.css">
+	<script src="js/templates.js"></script>
 	<script src="js/market.js"></script>
 
 	<link rel="shortcut icon" type="image/png" href="images/Face.png" />
