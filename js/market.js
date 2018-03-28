@@ -7,15 +7,6 @@ purraka.market = {
 	 */
 	init: function () {
 
-		// Prepare the template
-		$.ajax({
-			url: "html/market.mustache",
-			contentType: "text/plain; charset=UTF-8",
-			success: function (data) {
-				purraka.market.template = Hogan.compile(data);
-			}
-		});
-
 		// Get the initial data
 		purraka.market.submit();
 
@@ -143,7 +134,7 @@ purraka.market = {
 	/**
 	 * Placeholder for a Hogan template.
 	 */
-	template: new Hogan.Template(),
+	template: templates.market,
 
 	/**
 	 * Offset, used for infinite scrolling.
