@@ -38,13 +38,6 @@ if (isset($_GET['name'])) {
 	$name = "%".$_GET['name']."%";
 }
 
-// Offset
-$offset = 0;
-$limit = 100;
-if (isset($_GET['offset'])) {
-	$offset = $_GET['offset'] * $limit;
-}
-
 // Colour
 $colour = "%";
 if (isset($_GET['colour'])) {
@@ -55,6 +48,13 @@ if (isset($_GET['colour'])) {
 $type = '%';
 if (isset($_GET['type'])) {
 	$type = "%".$_GET['type']."%";
+}
+
+// Offset
+$offset = 0;
+$limit = 100;
+if (isset($_GET['offset'])) {
+	$offset = $_GET['offset'] * $limit;
 }
 
 // Statement
