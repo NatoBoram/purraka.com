@@ -45,14 +45,6 @@ purraka.market = {
 	 */
 	submit: function () {
 
-		// Maximum page
-		$.getJSON(
-			"ajax/market-count.php", {},
-			function (json) {
-				$("#filter-offset").attr("max", Math.floor(json.count / 100));
-			}
-		);
-
 		// Variables
 		var category = $("#filter-typeOptions").val();
 		var rarity = $("#filter-rarityOptions").val();
@@ -71,10 +63,18 @@ purraka.market = {
 				"name": name,
 				"offset": offset,
 				"colour": colour,
-				"type" : type
+				"type": type
 			},
 			function (json) {
 				purraka.market.show(json);
+			}
+		);
+
+		// Maximum page
+		$.getJSON(
+			"ajax/market-count.php", {},
+			function (json) {
+				$("#filter-offset").attr("max", Math.floor(json.count / 100));
 			}
 		);
 	},
@@ -103,7 +103,7 @@ purraka.market = {
 		var items = document.getElementsByClassName("market-item");
 		for (c = 0; c < items.length; c++) {
 			if (items[c].getElementsByClassName("data-bids")[0].textContent != "Enchères : 0") {
-				items[c].getElementsByClassName("buyNowPrice")[0].classList.add("text-muted");
+				items[c].getElementsByClassName("buyNowPrice")[0].parentElement.classList.add("text-muted");
 				items[c].getElementsByClassName("zscore-buyNowPrice")[0].classList.add("text-muted");
 			}
 		}
