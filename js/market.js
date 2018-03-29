@@ -112,7 +112,7 @@ purraka.market = {
 		// Hide buy now if there's a bid
 		var items = document.getElementsByClassName("market-item");
 		for (c = 0; c < items.length; c++) {
-			if (items[c].getElementsByClassName("data-bids")[0].textContent != "Enchères : 0") {
+			if (items[c].getElementsByClassName("data-bids")[0].textContent != "0") {
 				items[c].getElementsByClassName("buyNowPrice")[0].parentElement.classList.add("text-muted");
 				items[c].getElementsByClassName("zscore-buyNowPrice")[0].classList.add("text-muted");
 			}
