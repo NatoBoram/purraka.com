@@ -75,6 +75,7 @@ purraka.market = {
 			"ajax/market-count.php", {
 				"category": category,
 				"rarity": rarity,
+				"sort": sort,
 				"name": name,
 				"colour": colour,
 				"type": type

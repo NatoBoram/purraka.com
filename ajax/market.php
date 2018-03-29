@@ -4,8 +4,8 @@
 require("../php/pdo.inc.php");
 
 // Order
-// This one has to be hard-coded in PDO.
 $order = "zscore-buyNowPrice";
+$bidless = 0;
 if (isset($_GET['sort'])) {
 	switch ($_GET['sort']) {
 		case 'now':
@@ -16,6 +16,7 @@ if (isset($_GET['sort'])) {
 		break;
 		case 'bids':
 			$order = "zscore-data-bids";
+			$bidless = 1;
 		break;
 	}
 }
@@ -58,9 +59,9 @@ if (isset($_GET['offset'])) {
 }
 
 // Statement
-$stmt = $pdo->prepare("SELECT * FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour AND `abstract-type` LIKE :type ORDER BY `$order` LIMIT :offset,$limit;");
+$stmt = $pdo->prepare("SELECT * FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour AND `abstract-type` LIKE :type AND `data-bids` >= :bidless ORDER BY `$order` LIMIT :offset,$limit;");
 
-$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "offset" => $offset, "colour" => $colour, "type" => $type]);
+$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "offset" => $offset, "colour" => $colour, "type" => $type, "bidless" => $bidless]);
 
 // Array
 $y = array();
