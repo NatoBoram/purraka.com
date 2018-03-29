@@ -1,20 +1,18 @@
 {{#items}}
-<div class="row market-item border rounded bg-light" colour="{{data-wearableitemid}}">
+<div class="row border rounded bg-light market-item" colour="{{data-wearableitemid}}">
 	<div class="col-xl-2 col-lg-2 col-md-2 col-sm-3 col-6">
-		<img src="{{abstract-icon}}" class="img-fluid rounded">
+		<img src="{{abstract-icon}}" class="img-fluid rounded item-image">
 	</div>
-	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 abstract">
-		<span class="align-middle">
-			<h5 class="abstract-name btn-link text-dark">{{abstract-name}}</h5>
-			<h6 class="abstract-type btn-link text-dark">{{abstract-type}}</h6>
-		</span>
+	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-3 col-6 titles">
+		<h5 class="abstract-name btn-link text-dark">{{abstract-name}}</h5>
+		<h6 class="abstract-type btn-link text-dark">{{abstract-type}}</h6>
 	</div>
-	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-8">
-		<div class="currentPrice">Mise actuelle : {{currentPrice}}</div>
-		<div class="buyNowPrice">Achat immédiat : {{buyNowPrice}}</div>
-		<div class="data-bids">Enchères : {{data-bids}}</div>
+	<div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-8 prices">
+		<div>Mise actuelle : <span class="currentPrice">{{currentPrice}}</span></div>
+		<div>Achat immédiat : <span class="buyNowPrice">{{buyNowPrice}}</span></div>
+		<div>Enchères : <span class="data-bids">{{data-bids}}</span></div>
 	</div>
-	<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4 z-score">
+	<div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-4 z-scores">
 		<div class="zscore-currentPrice">{{zscore-currentPrice}}</div>
 		<div class="zscore-buyNowPrice">{{zscore-buyNowPrice}}</div>
 		<div class="zscore-data-bids">{{zscore-data-bids}}</div>
