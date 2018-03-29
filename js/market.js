@@ -45,6 +45,9 @@ purraka.market = {
 	 */
 	submit: function () {
 
+		// Loading
+		$(".loading").removeClass("d-none");
+
 		// Variables
 		var category = $("#filter-typeOptions").val();
 		var rarity = $("#filter-rarityOptions").val();
@@ -133,6 +136,9 @@ purraka.market = {
 			$("#filter-type").val(this.textContent);
 			purraka.market.submit();
 		});
+
+		// Loading
+		$(".loading").addClass("d-none");
 	},
 
 	/**

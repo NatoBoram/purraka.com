@@ -73,6 +73,9 @@
 
 			<!-- Reset -->
 			<button type="reset" class="btn btn-danger" onclick="purraka.market.reset(); purraka.market.submit();" id="resetform">Reset</button>
+
+			<!-- Loading -->
+			<i class="fas fa-circle-notch fa-spin d-none loading"></i>
 		</form>
 
 		<div class="container" id="market-content"></div>
