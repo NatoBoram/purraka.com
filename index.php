@@ -100,7 +100,6 @@
 				<li>3 : Arnaque</li>
 				<li>>3 : Quelqu'un est probablement en train de faire un transfert de maanas.</li>
 			</ul>
-			<p>Notez que </p>
 		</div>
 	</div>
 
