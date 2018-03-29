@@ -72,7 +72,13 @@ purraka.market = {
 
 		// Maximum page
 		$.getJSON(
-			"ajax/market-count.php", {},
+			"ajax/market-count.php", {
+				"category": category,
+				"rarity": rarity,
+				"name": name,
+				"colour": colour,
+				"type": type
+			},
 			function (json) {
 				$("#filter-offset").attr("max", Math.floor(json.count / 100));
 			}

@@ -3,12 +3,43 @@
 // Require
 require("../php/pdo.inc.php");
 
+// Rarity
+$rarity = '%';
+if (isset($_GET['rarity'])) {
+	$rarity = "%".$_GET['rarity']."%";
+}
+
+// Category
+$category = '%';
+if (isset($_GET['category'])) {
+	$category = "%".$_GET['category']."%";
+}
+
+// Name
+$name = '%';
+if (isset($_GET['name'])) {
+	$name = "%".$_GET['name']."%";
+}
+
+// Colour
+$colour = "%";
+if (isset($_GET['colour'])) {
+	$colour = $_GET['colour'] == "" ? "%" : $_GET['colour'];
+}
+
+// Type
+$type = '%';
+if (isset($_GET['type'])) {
+	$type = "%".$_GET['type']."%";
+}
+
 // Statement
-$stmt = $pdo->query("SELECT COUNT(*) AS count FROM `market-everything`");
-$row = $stmt->fetch();
+$stmt = $pdo->prepare("SELECT COUNT(*) AS count FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour AND `abstract-type` LIKE :type;");
+$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "colour" => $colour, "type" => $type]);
+$count = $stmt->fetch();
 
 // Display
 header('Content-Type: application/json');
-echo json_encode($row);
+echo json_encode($count);
 
 ?>
