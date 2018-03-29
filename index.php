@@ -98,7 +98,7 @@
 				<li>1 : Cher.</li>
 				<li>2 : Vous devriez probablement attendre un peu avant d'acheter ça.</li>
 				<li>3 : Arnaque</li>
-				<li>>3 : Quelqu'un est probablement en train de faire un transfert de maanas.</li>
+				<li>>3 : Quelqu'un a beaucoup d'espoir.</li>
 			</ul>
 		</div>
 	</div>
