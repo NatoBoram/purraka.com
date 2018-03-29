@@ -19,7 +19,7 @@
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
 			<h1>Purraka</h1>
-			<p>La meilleure valeur du marché.</p>
+			<p>Purraka est le purreko qui s'occupe du marché. Elle indexe le marché d'Eldarya à la recherche des meilleurs prix et les affiche en premier. <a href="#description">En savoir plus</a>.</p>
 		</div>
 	</div>
 
@@ -82,10 +82,7 @@
 		<div id="market-content"></div>
 
 		<!-- ReadMe -->
-		<div class="description">
-			<h2>Qui est Purraka?</h2>
-			<p>Purraka est le purreko qui s'occupe du marché. Elle indexe le marché d'Eldarya à la recherche des meilleurs prix et les affiche en premier.</p>
-			
+		<div id="description">
 			<h2>Comment ça marche?</h2>
 			<p>Les chiffres affichés à droite sont des <a href="https://fr.wikipedia.org/wiki/Cote_Z_(statistiques)" title="Wikipédia : Cote Z">Cote Z</a>. La Cote Z correspond au nombre d'écarts types séparant un résultat de la moyenne. Donc, une Cote Z négative signifie que le prix est en dessous de la moyenne, et une Cote Z positive signifie que le prix est supérieur à la moyenne.</p>
 			<p>Grâce à la Cote Z, vous pouvez évaluer le prix de la manière suivante.</p>
@@ -100,6 +97,7 @@
 				<li>3 : Arnaque</li>
 				<li>>3 : Quelqu'un a beaucoup d'espoir.</li>
 			</ul>
+			<p><a href="#top">Haut de la page</a>.</p>
 		</div>
 	</div>
 
