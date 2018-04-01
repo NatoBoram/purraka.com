@@ -34,10 +34,7 @@
 			<select id="filter-typeOptions" class="form-control">
 				<option value="">Toutes les catégories</option>
 				<option value="PlayerWearableItem">Équipement</option>
-				<option value="Food">Nourriture</option>
-				<option value="Tame">Appât</option>
-				<option value="Utility">Outil</option>
-				<option value="Alchemy">Alchimie</option>
+				<option value="Consumable">Consumable</option>
 				<option value="EggItem">Oeuf</option>
 				<option value="Bag">Baluchon</option>
 			</select>
@@ -55,7 +52,7 @@
 			<!-- Sort -->
 			<select id="filter-priceOptions" class="form-control">
 				<option value="now">Trier par achat immédiat</option>
-				<option value="current">Trier par prix courant</option>
+				<option value="current">Trier par mise actuelle</option>
 				<option value="bids">Trier par nombre d'enchères</option>
 			</select>
 
