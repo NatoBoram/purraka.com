@@ -34,7 +34,7 @@
 			<select id="filter-typeOptions" class="form-control">
 				<option value="">Toutes les catégories</option>
 				<option value="PlayerWearableItem">Équipement</option>
-				<option value="Consumable">Consumable</option>
+				<option value="Consumable">Consommable</option>
 				<option value="EggItem">Oeuf</option>
 				<option value="Bag">Baluchon</option>
 			</select>
