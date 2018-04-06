@@ -85,7 +85,7 @@
 		<div id="description">
 			<h2>Comment ça marche?</h2>
 			<p>
-				Les chiffres affichés à droite sont des <a href="https://fr.wikipedia.org/wiki/Cote_Z_(statistiques)" title="Wikipédia : Cote Z">Cote Z</a>.
+				Les chiffres affichés à droite sont des <a href="https://fr.wikipedia.org/wiki/Cote_Z_(statistiques)" title="Wikipédia : Cote Z">Cotes Z</a>.
 				La Cote Z correspond au nombre d'écarts types séparant un résultat de la moyenne.
 				Donc, une Cote Z négative signifie que le prix est en dessous de la moyenne, et une Cote Z positive signifie que le prix est supérieur à la moyenne.
 			</p>
