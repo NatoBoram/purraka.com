@@ -87,7 +87,7 @@
 			<p>
 				Les chiffres affichés à droite sont des <a href="https://fr.wikipedia.org/wiki/Cote_Z_(statistiques)" title="Wikipédia : Cote Z">Cotes Z</a>.
 				La Cote Z correspond au nombre d'écarts types séparant un résultat de la moyenne.
-				Donc, une Cote Z négative signifie que le prix est en dessous de la moyenne, et une Cote Z positive signifie que le prix est supérieur à la moyenne.
+				Donc, une Cote Z négative signifie que le prix est inférieur à la moyenne, et une Cote Z positive signifie que le prix est supérieur à la moyenne.
 			</p>
 			<p>Grâce à la Cote Z, vous pouvez évaluer le prix de la manière suivante.</p>
 			<ul>
@@ -103,6 +103,13 @@
 				<li>3 : Arnaque.</li>
 				<li>>3 : Quelqu'un a beaucoup d'espoir.</li>
 			</ul>
+			<p>
+				Purraka est un logiciel gratuit et open source développé par <a href="https://github.com/NatoBoram/">Nato Boram</a>.
+				Retrouvez le code source de <a href="https://github.com/NatoBoram/Purraka">Purraka</a> et de <a href="https://github.com/NatoBoram/purraka.com">purraka.com</a> sur Github.
+			</p>
+			<p>
+				Venez dire bonjour sur le <a href="https://discord.gg/t6CNFbt">Refuge d'Eel</a>!
+			</p>
 			<p>
 				<a href="#top">Haut de la page</a>.
 			</p>
