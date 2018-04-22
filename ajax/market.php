@@ -59,7 +59,7 @@ if (isset($_GET['offset'])) {
 }
 
 // Statement
-$stmt = $pdo->prepare("SELECT * FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour AND `abstract-type` LIKE :type AND `data-bids` >= :bidless ORDER BY `$order` LIMIT :offset,$limit;");
+$stmt = $pdo->prepare("SELECT `data-wearableitemid`, `data-itemid`, `data-type`, `rarity-marker`, `abstract-name`, `abstract-type`, `currentPrice`, `zscore-currentPrice`, `buyNowPrice`, `zscore-buyNowPrice`, `data-bids`, `zscore-data-bids`, `abstract-icon` FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour AND `abstract-type` LIKE :type AND `data-bids` >= :bidless ORDER BY `$order` LIMIT :offset,$limit;");
 
 $stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "offset" => $offset, "colour" => $colour, "type" => $type, "bidless" => $bidless]);
 
