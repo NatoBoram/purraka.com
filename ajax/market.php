@@ -29,8 +29,14 @@ if (isset($_GET['rarity'])) {
 
 // Category
 $category = '%';
+$notegg = 'EggItem';
 if (isset($_GET['category'])) {
 	$category = "%".$_GET['category']."%";
+
+	// Anti-Egg Squad
+	if ($_GET['category'] == "EggItem") {
+		$notegg = "";
+	}
 }
 
 // Name
@@ -47,14 +53,8 @@ if (isset($_GET['colour'])) {
 
 // Type
 $type = '%';
-$notegg = 'EggItem';
 if (isset($_GET['type'])) {
 	$type = "%".$_GET['type']."%";
-	
-	// Anti-Egg Squad
-	if ($_GET['type'] == "EggItem") {
-		$notegg = "";
-	}
 }
 
 // Offset
@@ -74,7 +74,7 @@ WHERE `data-type` LIKE :category
 	AND `data-wearableitemid` LIKE :colour
 	AND `abstract-type` LIKE :type
 	AND `data-bids` >= :bidless
-	AND `abstract-type` != '$notegg'
+	AND `data-type` != '$notegg'
 ORDER BY `$order`
 LIMIT :offset,$limit
 ;");
