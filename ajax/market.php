@@ -47,8 +47,14 @@ if (isset($_GET['colour'])) {
 
 // Type
 $type = '%';
+$notegg = 'EggItem';
 if (isset($_GET['type'])) {
 	$type = "%".$_GET['type']."%";
+	
+	// Anti-Egg Squad
+	if ($_GET['type'] == "EggItem") {
+		$notegg = "";
+	}
 }
 
 // Offset
@@ -59,7 +65,19 @@ if (isset($_GET['offset'])) {
 }
 
 // Statement
-$stmt = $pdo->prepare("SELECT `data-wearableitemid`, `data-itemid`, `data-type`, `rarity-marker`, `abstract-name`, `abstract-type`, `currentPrice`, `zscore-currentPrice`, `buyNowPrice`, `zscore-buyNowPrice`, `data-bids`, `zscore-data-bids`, `abstract-icon` FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour AND `abstract-type` LIKE :type AND `data-bids` >= :bidless ORDER BY `$order` LIMIT :offset,$limit;");
+$stmt = $pdo->prepare("SELECT
+	`data-wearableitemid`, `data-itemid`, `data-type`, `rarity-marker`, `abstract-name`, `abstract-type`, `currentPrice`, `zscore-currentPrice`, `buyNowPrice`, `zscore-buyNowPrice`, `data-bids`, `zscore-data-bids`, `abstract-icon`
+FROM `market-everything`
+WHERE `data-type` LIKE :category
+	AND `rarity-marker` LIKE :rarity
+	AND `abstract-name` LIKE :name
+	AND `data-wearableitemid` LIKE :colour
+	AND `abstract-type` LIKE :type
+	AND `data-bids` >= :bidless
+	AND `abstract-type` != '$notegg'
+ORDER BY `$order`
+LIMIT :offset,$limit
+;");
 
 $stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "offset" => $offset, "colour" => $colour, "type" => $type, "bidless" => $bidless]);
 
