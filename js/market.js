@@ -24,7 +24,7 @@ purraka.market = {
 	/**
 	 * Clears the market. Useful before adding different items.
 	 */
-	clear: function (params) {
+	clear: function () {
 		$("#market-content").html("");
 	},
 
