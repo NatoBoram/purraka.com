@@ -52,7 +52,7 @@ if (isset($_GET['type'])) {
 }
 
 // Statement
-$stmt = $pdo->prepare("SELECT COUNT(*) AS count FROM `market-everything` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour AND `abstract-type` LIKE :type AND `data-bids` >= :bidless ;");
+$stmt = $pdo->prepare("SELECT COUNT(*) AS count FROM `z-market` WHERE `data-type` LIKE :category AND `rarity-marker` LIKE :rarity AND `abstract-name` LIKE :name AND `data-wearableitemid` LIKE :colour AND `abstract-type` LIKE :type AND `data-bids` >= :bidless ;");
 $stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "colour" => $colour, "type" => $type, "bidless" => $bidless]);
 $count = $stmt->fetch();
 
