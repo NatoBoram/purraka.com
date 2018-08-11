@@ -111,7 +111,7 @@ purraka.market = {
 	show: function (json) {
 
 		// Round numbers
-		for (var c = 0; c < json.length; c++) {
+		for (let c = 0; c < json.length; c++) {
 			json[c]["zscore-currentPrice"] = round(json[c]["zscore-currentPrice"], 2);
 			json[c]["zscore-buyNowPrice"] = round(json[c]["zscore-buyNowPrice"], 2);
 			json[c]["zscore-data-bids"] = round(json[c]["zscore-data-bids"], 2);
@@ -126,7 +126,7 @@ purraka.market = {
 		$("#market-content").html(purraka.market.template.render(json));
 
 		// Hide buy now if there's a bid
-		var items = document.getElementsByClassName("market-item");
+		let items = document.getElementsByClassName("market-item");
 		for (c = 0; c < items.length; c++) {
 			if (items[c].getElementsByClassName("data-bids")[0].textContent != "0") {
 				items[c].getElementsByClassName("buyNowPrice")[0].parentElement.classList.add("text-muted");
