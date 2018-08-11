@@ -65,13 +65,13 @@ purraka.market = {
 		$(".loading").removeClass("d-none");
 
 		// Variables
-		var category = $("#filter-typeOptions").val();
-		var rarity = $("#filter-rarityOptions").val();
-		var sort = $("#filter-priceOptions").val();
-		var name = $("#filter-itemName").val();
-		var colour = $("#filter-colour").val();
-		var offset = $("#filter-offset").val();
-		var type = $("#filter-type").val();
+		const category = $("#filter-typeOptions").val();
+		const rarity = $("#filter-rarityOptions").val();
+		const sort = $("#filter-priceOptions").val();
+		const name = $("#filter-itemName").val();
+		const colour = $("#filter-colour").val();
+		const offset = $("#filter-offset").val();
+		const type = $("#filter-type").val();
 
 		// AJAX
 		$.getJSON(
@@ -170,6 +170,6 @@ purraka.market = {
  * @returns {Number}
  */
 function round(number, precision) {
-	var factor = Math.pow(10, precision);
+	const factor = Math.pow(10, precision);
 	return Math.round(number * factor) / factor;
 }
