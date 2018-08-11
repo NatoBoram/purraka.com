@@ -108,7 +108,7 @@
 				Retrouvez le code source de <a href="https://github.com/NatoBoram/Purraka">Purraka</a> et de <a href="https://github.com/NatoBoram/purraka.com">purraka.com</a> sur Github.
 			</p>
 			<p>
-				Venez dire bonjour sur le <a href="https://discord.gg/t6CNFbt">Refuge d'Eel</a>!
+				Venez dire bonjour sur le <a href="https://discord.gg/t6CNFbt">Discord</a>!
 			</p>
 			<p>
 				<a href="#top">Haut de la page</a>.
