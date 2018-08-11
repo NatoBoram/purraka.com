@@ -107,6 +107,7 @@ purraka.market = {
 
 	/**
 	 * Show what's been received using Hogan.JS.
+	 * @param {JSON} json Output from Purraka's market
 	 */
 	show: function (json) {
 
@@ -165,9 +166,9 @@ purraka.market = {
 
 /**
  * Rounds a number.
- * @param {Number} number 
- * @param {Number} precision 
- * @returns {Number}
+ * @param {Number} number Number to be rounded
+ * @param {Number} precision How many decimal digits are desired
+ * @returns {Number} Rounded number
  */
 function round(number, precision) {
 	const factor = Math.pow(10, precision);
