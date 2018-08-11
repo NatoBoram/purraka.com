@@ -67,7 +67,7 @@ if (isset($_GET['offset'])) {
 // Statement
 $stmt = $pdo->prepare("SELECT
 	`data-wearableitemid`, `data-itemid`, `data-type`, `rarity-marker`, `abstract-name`, `abstract-type`, `currentPrice`, `zscore-currentPrice`, `buyNowPrice`, `zscore-buyNowPrice`, `data-bids`, `zscore-data-bids`, `abstract-icon`
-FROM `market-everything`
+FROM `z-market`
 WHERE `data-type` LIKE :category
 	AND `rarity-marker` LIKE :rarity
 	AND `abstract-name` LIKE :name
