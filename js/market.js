@@ -11,8 +11,9 @@ purraka.market = {
 		purraka.market.submit();
 
 		// Prepare the form
-		$("select").change(purraka.market.submit);
-		$("input").change(purraka.market.submit);
+		$("select").change(purraka.market.visibleChange);
+		$("input").change(purraka.market.visibleChange);
+		$("input[type=hidden]").change(purraka.market.submit);
 		$("form").submit(function (e) {
 			e.preventDefault();
 			purraka.market.submit();
@@ -38,6 +39,22 @@ purraka.market = {
 		$("#filter-colour").val("");
 		$("#filter-type").val("");
 		$("#filter-offset").val("0");
+	},
+
+	/**
+	 * Reset only hidden input values.
+	 */
+	resetHidden: function () {
+		$("#filter-colour").val("");
+		$("#filter-type").val("");
+	},
+
+	/**
+	 * When a change it made on a visible input, it should reset the hidden inputs.
+	 */
+	visibleChange: function() {
+		purraka.market.resetHidden();
+		purraka.market.submit();
 	},
 
 	/**
