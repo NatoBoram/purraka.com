@@ -34,7 +34,6 @@ purraka.market = {
 	reset: function () {
 		$("#filter-typeOptions").val("");
 		$("#filter-rarityOptions").val("");
-		$("#filter-priceOptions").val("now");
 		$("#filter-itemName").val("");
 		$("#filter-colour").val("");
 		$("#filter-type").val("");
