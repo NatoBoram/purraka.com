@@ -5,20 +5,23 @@ require("../php/pdo.inc.php");
 
 // Order
 $order = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
-$bidless = 0;
+$bidstring = "`data-bids` >= 0";
 if (isset($_GET['sort'])) {
 	switch ($_GET['sort']) {
 		case 'now':
 			$order = "`zscore-buyNowPrice`";
+			$bidstring = "`data-bids` == 0";
 		break;
 		case 'current':
 			$order = "`zscore-currentPrice`";
+			$bidstring = "`data-bids` > 0";
 		break;
 		case 'bids':
 			$order = "`zscore-data-bids`";
-			$bidless = 1;
+			$bidstring = "`data-bids` > 0";
 		case "both":
 			$order = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
+			$bidstring = "`data-bids` >= 0";
 		break;
 	}
 }
@@ -67,10 +70,10 @@ FROM `z-market`
 	AND `abstract-name` LIKE :name
 	AND `data-wearableitemid` LIKE :colour
 	AND `abstract-type` LIKE :type
-	AND `data-bids` >= :bidless
+	AND $bidstring
 	AND `data-type` != '$notegg'
 ;");
-$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "colour" => $colour, "type" => $type, "bidless" => $bidless]);
+$stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "colour" => $colour, "type" => $type]);
 $count = $stmt->fetch();
 
 // Display
