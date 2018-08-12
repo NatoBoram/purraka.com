@@ -4,19 +4,21 @@
 require("../php/pdo.inc.php");
 
 // Order
-$order = "zscore-buyNowPrice";
+$order = "lower(`zscore-buyNowPrice`, `zscore-currentPrice`)";
 $bidless = 0;
 if (isset($_GET['sort'])) {
 	switch ($_GET['sort']) {
 		case 'now':
-			$order = "zscore-buyNowPrice";
+			$order = "`zscore-buyNowPrice`";
 		break;
 		case 'current':
-			$order = "zscore-currentPrice";
+			$order = "`zscore-currentPrice`";
 		break;
 		case 'bids':
-			$order = "zscore-data-bids";
+			$order = "`zscore-data-bids`";
 			$bidless = 1;
+		case "both":
+			$order = "lower(`zscore-buyNowPrice`, `zscore-currentPrice`)";
 		break;
 	}
 }
@@ -75,7 +77,7 @@ WHERE `data-type` LIKE :category
 	AND `abstract-type` LIKE :type
 	AND `data-bids` >= :bidless
 	AND `data-type` != '$notegg'
-ORDER BY `$order`
+ORDER BY $order
 LIMIT :offset,$limit
 ;");
 

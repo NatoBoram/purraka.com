@@ -9,14 +9,16 @@ $bidless = 0;
 if (isset($_GET['sort'])) {
 	switch ($_GET['sort']) {
 		case 'now':
-			$order = "zscore-buyNowPrice";
+			$order = "`zscore-buyNowPrice`";
 		break;
 		case 'current':
-			$order = "zscore-currentPrice";
+			$order = "`zscore-currentPrice`";
 		break;
 		case 'bids':
-			$order = "zscore-data-bids";
+			$order = "`zscore-data-bids`";
 			$bidless = 1;
+		case "both":
+			$order = "lower(`zscore-buyNowPrice`, `zscore-currentPrice`)";
 		break;
 	}
 }

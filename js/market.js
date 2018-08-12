@@ -18,7 +18,6 @@ purraka.market = {
 			e.preventDefault();
 			purraka.market.submit();
 		});
-
 	},
 
 	/**

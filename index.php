@@ -51,6 +51,7 @@
 
 			<!-- Sort -->
 			<select id="filter-priceOptions" class="form-control">
+				<option value="both">Trier par meilleur Cote Z</option>	
 				<option value="now">Trier par achat immédiat</option>
 				<option value="current">Trier par mise actuelle</option>
 				<option value="bids">Trier par nombre d'enchères</option>
