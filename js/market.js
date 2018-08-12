@@ -18,6 +18,8 @@ purraka.market = {
 			e.preventDefault();
 			purraka.market.submit();
 		});
+
+		setInterval(purraka.market.submit, 1000 * 60);
 	},
 
 	/**
@@ -50,7 +52,7 @@ purraka.market = {
 	/**
 	 * When a change it made on a visible input, it should reset the hidden inputs.
 	 */
-	visibleChange: function() {
+	visibleChange: function () {
 		purraka.market.resetHidden();
 		purraka.market.submit();
 	},
