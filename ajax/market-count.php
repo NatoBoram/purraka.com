@@ -10,7 +10,7 @@ if (isset($_GET['sort'])) {
 	switch ($_GET['sort']) {
 		case 'now':
 			$order = "`zscore-buyNowPrice`";
-			$bidstring = "`data-bids` == 0";
+			$bidstring = "`data-bids` = 0";
 		break;
 		case 'current':
 			$order = "`zscore-currentPrice`";
