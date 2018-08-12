@@ -51,7 +51,7 @@ purraka.market = {
 	},
 
 	/**
-	 * When a change it made on a visible input, it should reset the hidden inputs.
+	 * When a change is made on a visible input, it should reset the hidden inputs.
 	 */
 	visibleChange: function () {
 		purraka.market.resetHidden();
@@ -143,12 +143,14 @@ purraka.market = {
 			$("#filter-itemName").val(this.textContent);
 			purraka.market.submit();
 		});
+
 		// OnClick Image
 		$(".market-item img").click(function () {
 			purraka.market.reset();
 			$("#filter-colour").val($(this).closest(".market-item").attr("colour"));
 			purraka.market.submit();
 		});
+
 		// OnClick Type
 		$(".abstract-type").click(function () {
 			purraka.market.reset();

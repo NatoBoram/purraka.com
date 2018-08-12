@@ -14,11 +14,11 @@ if (isset($_GET['sort'])) {
 		break;
 		case 'current':
 			$order = "`zscore-currentPrice`";
-			$bidstring = "`data-bids` > 0";
+			$bidstring = "`data-bids` >= 0";
 		break;
 		case 'bids':
 			$order = "`zscore-data-bids`";
-			$bidstring = "`data-bids` > 0";
+			$bidstring = "`data-bids` >= 0";
 		case "both":
 			$order = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
 			$bidstring = "`data-bids` >= 0";
