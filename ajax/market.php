@@ -5,18 +5,18 @@ require("../php/pdo.inc.php");
 
 // Order
 $order = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
-$bidless = -1;
+$bidless = 0;
 if (isset($_GET['sort'])) {
 	switch ($_GET['sort']) {
 		case 'now':
 			$order = "`zscore-buyNowPrice`";
-			$bidless = 0;
 		break;
 		case 'current':
 			$order = "`zscore-currentPrice`";
 		break;
 		case 'bids':
 			$order = "`zscore-data-bids`";
+			$bidless = 1;
 		case "both":
 			$order = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
 		break;
@@ -75,7 +75,7 @@ WHERE `data-type` LIKE :category
 	AND `abstract-name` LIKE :name
 	AND `data-wearableitemid` LIKE :colour
 	AND `abstract-type` LIKE :type
-	AND `data-bids` != :bidless
+	AND `data-bids` >= :bidless
 	AND `data-type` != '$notegg'
 ORDER BY $order, if(`data-bids` = 0, greatest(`currentPrice`, `buyNowPrice`), `currentPrice`)
 LIMIT :offset,$limit
