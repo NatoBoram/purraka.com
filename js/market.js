@@ -19,6 +19,7 @@ purraka.market = {
 			purraka.market.submit();
 		});
 
+		// Refresh every minutes
 		setInterval(purraka.market.submit, 1000 * 60);
 	},
 
