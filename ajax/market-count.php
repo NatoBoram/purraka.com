@@ -4,7 +4,7 @@
 require("../php/pdo.inc.php");
 
 // Order
-$order = "least(`zscore-buyNowPrice`, `zscore-currentPrice`)";
+$order = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
 $bidless = 0;
 if (isset($_GET['sort'])) {
 	switch ($_GET['sort']) {
@@ -18,7 +18,7 @@ if (isset($_GET['sort'])) {
 			$order = "`zscore-data-bids`";
 			$bidless = 1;
 		case "both":
-			$order = "least(`zscore-buyNowPrice`, `zscore-currentPrice`)";
+			$order = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
 		break;
 	}
 }
