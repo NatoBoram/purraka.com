@@ -80,7 +80,7 @@ WHERE `data-type` LIKE :category
 	AND `abstract-type` LIKE :type
 	AND $bidstring
 	AND `data-type` != '$notegg'
-ORDER BY $order, if(`data-bids` = 0, greatest(`currentPrice`, `buyNowPrice`), `currentPrice`)
+ORDER BY $order asc, if(`data-bids` = 0, greatest(`currentPrice`, `buyNowPrice`), `currentPrice`) desc
 LIMIT :offset,$limit
 ;");
 
