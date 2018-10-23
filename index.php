@@ -105,8 +105,8 @@
 				<li>>3 : Quelqu'un a beaucoup d'espoir.</li>
 			</ul>
 			<p>
-				Purraka est un logiciel gratuit et open source développé par <a href="https://github.com/NatoBoram/">Nato Boram</a>.
-				Retrouvez le code source de <a href="https://github.com/NatoBoram/Purraka">Purraka</a> et de <a href="https://github.com/NatoBoram/purraka.com">purraka.com</a> sur Github.
+				Purraka est un logiciel gratuit et open source développé par <a href="https://gitlab.com/NatoBoram/">Nato Boram</a>.
+				Retrouvez le code source de <a href="https://gitlab.com/NatoBoram/Purraka">Purraka</a> et de <a href="https://gitlab.com/NatoBoram/purraka.com">purraka.com</a> sur GitLab.
 			</p>
 			<p>
 				Venez dire bonjour sur le <a href="https://discord.gg/t6CNFbt">Discord</a>!
