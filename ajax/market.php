@@ -104,7 +104,7 @@ while ($row = $stmt->fetch()) {
 		"zscore-buyNowPrice"=> $row["zscore-buyNowPrice"],
 		"data-bids"=> $row["data-bids"],
 		"zscore-data-bids"=> $row["zscore-data-bids"],
-		"abstract-icon"=> "http://eldarya.fr".$row["abstract-icon"]
+		"abstract-icon"=> "https://eldarya.fr".$row["abstract-icon"]
 	);
 	
 	// Rows
