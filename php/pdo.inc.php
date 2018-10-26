@@ -1,6 +1,6 @@
 <?php
 
-require("passwords.inc.php");
+require "passwords.inc.php";
 
 $dsn = "mysql:host=$host:$port;dbname=$db;charset=$charset";
 $opt = [
@@ -9,6 +9,3 @@ $opt = [
 	PDO::ATTR_EMULATE_PREPARES   => false,
 ];
 $pdo = new PDO($dsn, $user, $pass, $opt);
-
-
-?>

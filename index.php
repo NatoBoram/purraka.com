@@ -1,9 +1,9 @@
-<?php require("php/pdo.inc.php"); ?>
+<?php require "php/pdo.inc.php"; ?>
 <!DOCTYPE html>
 <html lang="fr">
 
 <head>
-	<?php include("html/head.html"); ?>
+	<?php include "html/head.html"; ?>
 
 	<link rel="stylesheet" type="text/css" href="css/market.css">
 	<script src="js/templates.js"></script>
@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<?php include("html/navbar.html"); ?>
+	<?php include "html/navbar.html"; ?>
 
 	<div class="jumbotron jumbotron-fluid">
 		<div class="container">
@@ -51,7 +51,7 @@
 
 			<!-- Sort -->
 			<select id="filter-priceOptions" class="form-control">
-				<option value="both">Trier par meilleur Cote Z</option>	
+				<option value="both">Trier par meilleur Cote Z</option>
 				<option value="now">Trier par achat immédiat</option>
 				<option value="current">Trier par mise actuelle</option>
 				<option value="bids">Trier par nombre d'enchères</option>

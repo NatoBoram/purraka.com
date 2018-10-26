@@ -1,27 +1,27 @@
 <?php
 
 // Require
-require("../php/pdo.inc.php");
+require "../php/pdo.inc.php";
 
 // Order
-$order = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
+$order     = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
 $bidstring = "`data-bids` >= 0";
 if (isset($_GET['sort'])) {
 	switch ($_GET['sort']) {
-		case 'now':
-			$order = "`zscore-buyNowPrice`";
-			$bidstring = "`data-bids` = 0";
+	case 'now':
+		$order     = "`zscore-buyNowPrice`";
+		$bidstring = "`data-bids` = 0";
 		break;
-		case 'current':
-			$order = "`zscore-currentPrice`";
-			$bidstring = "`data-bids` >= 0";
+	case 'current':
+		$order     = "`zscore-currentPrice`";
+		$bidstring = "`data-bids` >= 0";
 		break;
-		case 'bids':
-			$order = "`zscore-data-bids`";
-			$bidstring = "`data-bids` >= 0";
-		case "both":
-			$order = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
-			$bidstring = "`data-bids` >= 0";
+	case 'bids':
+		$order     = "`zscore-data-bids`";
+		$bidstring = "`data-bids` >= 0";
+	case "both":
+		$order     = "if(`data-bids` = 0, least(`zscore-buyNowPrice`, `zscore-currentPrice`), `zscore-currentPrice`)";
+		$bidstring = "`data-bids` >= 0";
 		break;
 	}
 }
@@ -29,14 +29,14 @@ if (isset($_GET['sort'])) {
 // Rarity
 $rarity = '%';
 if (isset($_GET['rarity'])) {
-	$rarity = "%".$_GET['rarity']."%";
+	$rarity = "%" . $_GET['rarity'] . "%";
 }
 
 // Category
 $category = '%';
-$notegg = 'EggItem';
+$notegg   = 'EggItem';
 if (isset($_GET['category'])) {
-	$category = "%".$_GET['category']."%";
+	$category = "%" . $_GET['category'] . "%";
 
 	// Anti-Egg Squad
 	if ($_GET['category'] == "EggItem") {
@@ -47,7 +47,7 @@ if (isset($_GET['category'])) {
 // Name
 $name = '%';
 if (isset($_GET['name'])) {
-	$name = "%".$_GET['name']."%";
+	$name = "%" . $_GET['name'] . "%";
 }
 
 // Colour
@@ -59,12 +59,12 @@ if (isset($_GET['colour'])) {
 // Type
 $type = '%';
 if (isset($_GET['type'])) {
-	$type = "%".$_GET['type']."%";
+	$type = "%" . $_GET['type'] . "%";
 }
 
 // Offset
 $offset = 0;
-$limit = 100;
+$limit  = 100;
 if (isset($_GET['offset'])) {
 	$offset = $_GET['offset'] * $limit;
 }
@@ -89,30 +89,28 @@ $stmt->execute(["category" => $category, "rarity" => $rarity, "name" => $name, "
 // Array
 $y = array();
 while ($row = $stmt->fetch()) {
-	
+
 	// Columns
 	$x = array(
 		"data-wearableitemid" => $row["data-wearableitemid"],
-		"data-itemid"=> $row["data-itemid"],
-		"data-type"=> $row["data-type"],
-		"rarity-marker"=> $row["rarity-marker"],
-		"abstract-name"=> $row["abstract-name"],
-		"abstract-type"=> $row["abstract-type"],
-		"currentPrice"=> $row["currentPrice"],
-		"zscore-currentPrice"=> $row["zscore-currentPrice"],
-		"buyNowPrice"=> $row["buyNowPrice"],
-		"zscore-buyNowPrice"=> $row["zscore-buyNowPrice"],
-		"data-bids"=> $row["data-bids"],
-		"zscore-data-bids"=> $row["zscore-data-bids"],
-		"abstract-icon"=> "https://eldarya.fr".$row["abstract-icon"]
+		"data-itemid"         => $row["data-itemid"],
+		"data-type"           => $row["data-type"],
+		"rarity-marker"       => $row["rarity-marker"],
+		"abstract-name"       => $row["abstract-name"],
+		"abstract-type"       => $row["abstract-type"],
+		"currentPrice"        => $row["currentPrice"],
+		"zscore-currentPrice" => $row["zscore-currentPrice"],
+		"buyNowPrice"         => $row["buyNowPrice"],
+		"zscore-buyNowPrice"  => $row["zscore-buyNowPrice"],
+		"data-bids"           => $row["data-bids"],
+		"zscore-data-bids"    => $row["zscore-data-bids"],
+		"abstract-icon"       => "https://eldarya.fr" . $row["abstract-icon"],
 	);
-	
+
 	// Rows
-    array_push($y, $x);
+	array_push($y, $x);
 }
 
 // Display
 header('Content-Type: application/json; charset=utf-8');
 echo json_encode($y);
-
-?>

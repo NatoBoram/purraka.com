@@ -5,7 +5,7 @@ purraka.market = {
 	/**
 	 * Fired when the document is loaded.
 	 */
-	init: function () {
+	init: function() {
 
 		// Get the initial data
 		purraka.market.submit();
@@ -14,7 +14,7 @@ purraka.market = {
 		$("select").change(purraka.market.visibleChange);
 		$("input").change(purraka.market.visibleChange);
 		$("input[type=hidden]").change(purraka.market.submit);
-		$("form").submit(function (e) {
+		$("form").submit(function(e) {
 			e.preventDefault();
 			purraka.market.submit();
 		});
@@ -26,14 +26,14 @@ purraka.market = {
 	/**
 	 * Clears the market. Useful before adding different items.
 	 */
-	clear: function () {
+	clear: function() {
 		$("#market-content").html("");
 	},
 
 	/**
 	 * Resets the form.
 	 */
-	reset: function () {
+	reset: function() {
 		$("#filter-typeOptions").val("");
 		$("#filter-rarityOptions").val("");
 		$("#filter-itemName").val("");
@@ -45,7 +45,7 @@ purraka.market = {
 	/**
 	 * Reset only hidden input values.
 	 */
-	resetHidden: function () {
+	resetHidden: function() {
 		$("#filter-colour").val("");
 		$("#filter-type").val("");
 	},
@@ -53,7 +53,7 @@ purraka.market = {
 	/**
 	 * When a change is made on a visible input, it should reset the hidden inputs.
 	 */
-	visibleChange: function () {
+	visibleChange: function() {
 		purraka.market.resetHidden();
 		purraka.market.submit();
 	},
@@ -61,7 +61,7 @@ purraka.market = {
 	/**
 	 * Parses the form, then sends an AJAX request to get a few items.
 	 */
-	submit: function () {
+	submit: function() {
 
 		// Loading
 		$(".loading").removeClass("d-none");
@@ -86,7 +86,7 @@ purraka.market = {
 				"colour": colour,
 				"type": type
 			},
-			function (json) {
+			function(json) {
 				purraka.market.show(json);
 			}
 		);
@@ -101,7 +101,7 @@ purraka.market = {
 				"colour": colour,
 				"type": type
 			},
-			function (json) {
+			function(json) {
 				$("#filter-offset").attr("max", Math.floor(json.count / 100));
 			}
 		);
@@ -111,7 +111,7 @@ purraka.market = {
 	 * Show what's been received using Hogan.JS.
 	 * @param {JSON} json Output from Purraka's market
 	 */
-	show: function (json) {
+	show: function(json) {
 
 		// Round numbers
 		for (let c = 0; c < json.length; c++) {
@@ -138,21 +138,21 @@ purraka.market = {
 		}
 
 		// OnClick Name
-		$(".abstract-name").click(function () {
+		$(".abstract-name").click(function() {
 			purraka.market.reset();
 			$("#filter-itemName").val(this.textContent);
 			purraka.market.submit();
 		});
 
 		// OnClick Image
-		$(".market-item img").click(function () {
+		$(".market-item img").click(function() {
 			purraka.market.reset();
 			$("#filter-colour").val($(this).closest(".market-item").attr("colour"));
 			purraka.market.submit();
 		});
 
 		// OnClick Type
-		$(".abstract-type").click(function () {
+		$(".abstract-type").click(function() {
 			purraka.market.reset();
 			$("#filter-type").val(this.textContent);
 			purraka.market.submit();
