@@ -1,0 +1,18 @@
+{
+	"editor.insertSpaces": false,
+	"editor.detectIndentation": false,
+
+	"javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+
+	"phpfmt.psr2": false,
+	"phpfmt.indent_with_space": false,
+	"phpfmt.enable_auto_align": true,
+
+	"beautify.language": {
+		"html": [
+			"html",
+			"mustache",
+			"htaccess"
+		]
+	}
+}
