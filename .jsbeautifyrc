@@ -1,0 +1,13 @@
+{
+	"indent_with_tabs": true,
+	"max_preserve_newlines": 2,
+	"extra_liners": [
+		"head",
+		"body",
+		"/html",
+		"!--"
+	],
+	"indent_handlebars": true,
+	"newline_between_rules": true,
+	"selector_separator_newline": false
+}
